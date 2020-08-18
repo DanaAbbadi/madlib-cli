@@ -14,7 +14,7 @@ Basically the program asks the user to enter different types of words, then read
 
 # PR Link:
 
-https://github.com/DanaAbbadi/math-series/pull/1
+https://github.com/DanaAbbadi/madlib-cli/pull/1
 
 <br>
 <hr>
