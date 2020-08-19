@@ -1,6 +1,6 @@
 import re
 
-def readfile():
+def read_template():
     """
     Returns the template.txt file 
     """
@@ -20,12 +20,12 @@ def parse(constant):
     """
     lst=[]
     res = re.findall(r'\{.*?\}', constant)
-    res = re.findall(r'\{.*?\}', constant)
+    # res = re.findall(r'\{.*?\}', constant)
     for i in res:
         lst.append(i.strip("{ }"))    
     return lst
 
-def merge(constant):  
+def merge(constant, words):  
 
     """
     Returns a string with user input strings
@@ -37,10 +37,7 @@ def merge(constant):
 
     """
     lst = parse(constant)  
-    words=[]
-    for i in range(len(lst)):
-        words.append(input("enter a {} ".format(lst[i])))
-    return (re.sub(r' {[^}]*}',' {} ',constant)).format(*words)
+    return (re.sub(r' {[^}]*}',' {}',constant)).format(*words)
 
 
 def copyFile(text):
@@ -48,12 +45,14 @@ def copyFile(text):
     file = open('assets/ready.txt','w')
     file.write(text)
 
-
 if __name__ == "__main__":
     print("Welcome to Madlib Game")
-    content = readfile()
+    content = read_template()
     lst = parse(content)
-    toCopy = merge(content)
+    words=[]
+    for i in range(len(lst)):
+        words.append(input("enter a {} ".format(lst[i])))
+    toCopy = merge(content, words)
     copyFile(toCopy)
 
 
